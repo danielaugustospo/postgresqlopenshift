@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+client_result "installing pg devel "
+
+client_result "completed install of pg devel"
+

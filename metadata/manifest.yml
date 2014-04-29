@@ -1,0 +1,20 @@
+Name: pgdevel
+Cartridge-Short-Name: PGDEVEL
+Display-Name: postgresql-devel-crunchy
+Description: postgres developer tools collection
+Version: "1.0"
+Website: http://www.crunchydatasolutions.com
+Cartridge-Version: 1.0.0
+Cartridge-Vendor: crunchydatasolutions
+Categories:
+  - service
+  - embedded
+Provides:
+  - pgdevel-1.0
+  - pgdevel
+Scaling:
+  Min: 1
+  Max: -1
+Endpoints:
+
+Source-Url: https://github.com/crunchyds/openshift-postgres-devel-cartridge.git
