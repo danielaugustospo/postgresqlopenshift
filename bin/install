@@ -8,7 +8,7 @@ client_result "installing pg devel "
 # setup pgadmin3 
 #
 unzip -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/pgadmin3-build.zip
-echo $LD_LIBRARY_PATH:$OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/lib > env/LD_LIBRARY_PATH
+echo $LD_LIBRARY_PATH:$OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/lib > ~/.env/user_vars/LD_LIBRARY_PATH
 
 echo $OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/bin > env/OPENSHIFT_PGDEVEL_PATH_ELEMENT
 
