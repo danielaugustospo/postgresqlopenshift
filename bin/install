@@ -25,6 +25,7 @@ unzip -q -d $OPENSHIFT_PGDEVEL_DIR/ora2pg $OPENSHIFT_PGDEVEL_DIR/archives/myora2
 unzip -q -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/instantclient-basic*.zip
 unzip -q -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/instantclient-sdk*.zip
 unzip -q -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/instantclient-sqlplus*.zip
+erb $OPENSHIFT_PGDEVEL_DIR/ora2pg/etc/ora2pg/ora2pg.conf.erb > $OPENSHIFT_PGDEVEL_DIR/ora2pg/etc/ora2pg/ora2pg.conf
 
 #
 # set PATH
