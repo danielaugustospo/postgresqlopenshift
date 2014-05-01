@@ -9,7 +9,7 @@ client_result "installing pg devel "
 #
 echo 'create extension pldbgapi' | psql -U $USER postgres
 echo 'create extension pldbgapi' | psql -U $USER template1
-cat $OPENSHIFT_PGDEVEL_DIR/archive/postgresql.conf.pldebugger >> $OPENSHIFT_DATA_DIR/.pg/data/postgresql.conf
+cat $OPENSHIFT_PGDEVEL_DIR/archives/postgresql.conf.pldebugger >> $OPENSHIFT_DATA_DIR/.pg/data/postgresql.conf
 
 #
 # setup pgbadger
