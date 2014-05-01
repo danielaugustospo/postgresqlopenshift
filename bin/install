@@ -5,11 +5,18 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 client_result "installing pg devel "
 
 #
+# setup pgadmin debugger extension
+#
+echo 'create extension pldbgapi' | psql -U $USER postgres
+echo 'create extension pldbgapi' | psql -U $USER template1
+cat $OPENSHIFT_PGDEVEL_DIR/archive/postgresql.conf.pldebugger >> $OPENSHIFT_DATA_DIR/.pg/data/postgresql.conf
+
+#
 # setup pgbadger
 #
 unzip -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/pgbadger-build.zip
-cat $OPENSHIFT_PGDEVEL_DIR/pgbadger-5.0/postgresql.conf.pgbadger >> $OPENSHIFT_PGRLS_DIR/data/postgresql.conf
-$OPENSHIFT_PGRLS_DIR/bin/control restart
+cat $OPENSHIFT_PGDEVEL_DIR/pgbadger-5.0/postgresql.conf.pgbadger >> $OPENSHIFT_DATA_DIR/.pg/data/postgresql.conf
+$OPENSHIFT_PG_DIR/bin/control restart
 
 
 #
