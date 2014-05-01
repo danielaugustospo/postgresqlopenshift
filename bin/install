@@ -5,12 +5,36 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 client_result "installing pg devel "
 
 #
-# setup pgadmin3 
+# setup pgadmin3
 #
 unzip -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/pgadmin3-build.zip
-echo $LD_LIBRARY_PATH:$OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/lib > ~/.env/user_vars/LD_LIBRARY_PATH
 
-echo $OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/bin > env/OPENSHIFT_PGDEVEL_PATH_ELEMENT
+#
+# setup ora2pg
+#
+mkdir $OPENSHIFT_PGDEVEL_DIR/ora2pg
+unzip -q -d $OPENSHIFT_PGDEVEL_DIR/ora2pg $OPENSHIFT_PGDEVEL_DIR/archives/myora2pg.zip
+unzip -q -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/instantclient-basic*.zip
+unzip -q -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/instantclient-sdk*.zip
+unzip -q -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/instantclient-sqlplus*.zip
 
-client_result "completed install of pg devel"
+#
+# set PATH
+#
+tpath=$OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/bin
+tpath=$tpath:$OPENSHIFT_PGDEVEL_DIR/instantclient_12_1
+tpath=$tpath:$OPENSHIFT_PGDEVEL_DIR/ora2pg/usr/local/bin
+
+echo $tpath > env/OPENSHIFT_PGDEVEL_PATH_ELEMENT
+export PATH=$tpath
+
+#
+# set LD_LIBRARY_PATH
+#
+tldpath=$LD_LIBRARY_PATH
+tldpath=$tldpath:$OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/lib
+tldpath=$tldpath:$OPENSHIFT_PGDEVEL_DIR/instantclient_12_1
+
+echo $tldpath > ~/.env/user_vars/LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$tldpath
 
