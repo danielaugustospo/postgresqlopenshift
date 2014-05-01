@@ -5,6 +5,14 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 client_result "installing pg devel "
 
 #
+# setup pgbadger
+#
+unzip -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/pgbadger-build.zip
+cat $OPENSHIFT_PGDEVEL_DIR/pgbadger-5.0/postgresql.conf.pgbadger >> $OPENSHIFT_PGRLS_DIR/data/postgresql.conf
+$OPENSHIFT_PGRLS_DIR/bin/control restart
+
+
+#
 # setup pgadmin3
 #
 unzip -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/pgadmin3-build.zip
@@ -24,9 +32,18 @@ unzip -q -d $OPENSHIFT_PGDEVEL_DIR $OPENSHIFT_PGDEVEL_DIR/archives/instantclient
 tpath=$OPENSHIFT_PGDEVEL_DIR/pgadmin3-build/bin
 tpath=$tpath:$OPENSHIFT_PGDEVEL_DIR/instantclient_12_1
 tpath=$tpath:$OPENSHIFT_PGDEVEL_DIR/ora2pg/usr/local/bin
+tpath=$tpath:$OPENSHIFT_PGDEVEL_DIR/pgbadger-5.0
 
 echo $tpath > env/OPENSHIFT_PGDEVEL_PATH_ELEMENT
 export PATH=$tpath
+
+#
+# set PERL5LIB for ora2pg
+#
+ppath=$OPENSHIFT_PGDEVEL_DIR/ora2pg/usr/local/share/perl5
+ppath=$ppath:$OPENSHIFT_PGDEVEL_DIR/ora2pg/usr/lib64/perl5
+ppath=$ppath:$OPENSHIFT_PGDEVEL_DIR/ora2pg/usr/local/lib64/perl5
+echo $ppath > env/PERL5LIB
 
 #
 # set LD_LIBRARY_PATH
