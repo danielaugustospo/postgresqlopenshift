@@ -17,7 +17,7 @@ Usage
 
 Setup the OpenShift Postgresql instance
 
----bash
+---
 $ rhc app-create devtest -t php-5.3
 $ rhc cartridge-add crunchydatasolutions-pg-1.0 --app dev
 $ rhc cartridge-add crunchydatasolutions-pgdevel-1.0 --app dev
