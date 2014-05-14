@@ -2,14 +2,12 @@
 
 Summary:       Provides Crunchy Postgres Developer tools support
 Name:          openshift-postgres-devel-cart
-Version:       1.0.0
+Version:       1.0.1
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
 URL:           http://www.openshift.com
 Source0:       file:///./%{name}-%{version}.tar.gz
-Requires:      rubygem(openshift-origin-node)
-Requires:      openshift-origin-node-util
 Requires:      lsof
 Requires:      bc
 Requires:      /bin/sh
@@ -41,5 +39,8 @@ provides crunchy postresql developer tools
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Tue May 13 2014 jeff mccormick <jeffmc04@gmail.com> 1.0.1-1
+- new package built with tito
+
 
 
