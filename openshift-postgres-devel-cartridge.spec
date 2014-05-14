@@ -2,7 +2,7 @@
 
 Summary:       Provides Crunchy Postgres Developer tools support
 Name:          openshift-postgres-devel-cartridge
-Version:       1.0.2
+Version:       1.0.3
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -33,12 +33,14 @@ provides crunchy postresql developer tools
 %files
 %dir %{cartridgedir}
 %attr(0755,-,-) %{cartridgedir}/bin/
-%attr(0755,-,-) %{cartridgedir}/hooks/
 %{cartridgedir}
 %doc %{cartridgedir}/README.md
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Tue May 13 2014 jeff mccormick <jeffmc04@gmail.com> 1.0.3-1
+- 
+
 * Tue May 13 2014 jeff mccormick <jeffmc04@gmail.com> 1.0.2-1
 - new package built with tito
 
