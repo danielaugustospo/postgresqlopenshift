@@ -1,8 +1,8 @@
 %global cartridgedir %{_libexecdir}/openshift/cartridges/crunchypg-devel-cart
 
 Summary:       Provides Crunchy Postgres Developer tools support
-Name:          openshift-postgres-devel-cart
-Version:       1.0.1
+Name:          openshift-postgres-devel-cartridge
+Version:       1.0.2
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -39,6 +39,9 @@ provides crunchy postresql developer tools
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Tue May 13 2014 jeff mccormick <jeffmc04@gmail.com> 1.0.2-1
+- new package built with tito
+
 * Tue May 13 2014 jeff mccormick <jeffmc04@gmail.com> 1.0.1-1
 - new package built with tito
 
