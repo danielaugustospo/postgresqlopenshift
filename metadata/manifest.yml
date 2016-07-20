@@ -1,20 +1,44 @@
-Name: pgdevel
-Cartridge-Short-Name: PGDEVEL
-Display-Name: postgresql-devel-crunchy
-Description: postgres developer tools collection
-Version: "1.0"
-Website: http://www.crunchydatasolutions.com
-Cartridge-Version: 1.0.0
-Cartridge-Vendor: crunchydatasolutions
+Name: phppgadmin
+Cartridge-Short-Name: PHPPGADMIN
+Display-Name: phpPgAdmin 5.0
+Description: "Web based PostgreSQL admin tool. Requires the PostgreSQL cartridge to be installed first."
+Version: 5.0
+License: GPLv2
+Vendor: Hiro Asari
+Cartridge-Version: 0.1.0
+Cartridge-Vendor: hasari
+Website: "http://www.phppgadmin.net/"
+Source-Url: https://github.com/BanzaiMan/openshift-origin-cartridge-phppgadmin.git
 Categories:
-  - service
   - embedded
+Cart-Data:
+  - Key: connection_url
+    Type: cart_data
+    Description: "phpPgAdmin connection URL"
 Provides:
-  - pgdevel-1.0
-  - pgdevel
+  - phppgadmin-5.0
+  - "phppgadmin"
+Publishes:
+  get-serve-info:
+    Type: "NET_TCP:db-config:url"
+Subscribes:
+  set-db-connection-info:
+    Type: "NET_TCP:db:connection-info"
+    Required: false
+  set-postgresql-connection-info:
+    Type: "NET_TCP:db:postgresql"
+    Required : true
 Scaling:
   Min: 1
-  Max: -1
+  Max: 1
+Configure-Order:
+  - postgresql
+  - phppgadmin
 Endpoints:
-
-Source-Url: https://github.com/crunchyds/openshift-postgres-devel-cartridge.git
+  - Private-IP-Name:   IP
+    Private-Port-Name: PORT
+    Private-Port:      5432
+    Public-Port-Name:  PROXY_PORT
+    Mappings:
+      - Frontend:      "/phppgadmin"
+        Backend:       "/phppgadmin"
